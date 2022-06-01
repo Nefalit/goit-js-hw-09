@@ -31,17 +31,15 @@ function createPromise(count, delay) {
   });
 }
 
-formEl.addEventListener('submit', event => {
-  event.preventDefault();
+formEl.addEventListener('submit', ev => {
+  ev.preventDefault();
   time = firstDelayEl.valueAsNumber;
   step = stepDelayEl.valueAsNumber;
   amount = amountEl.valueAsNumber;
   for (let i = 0; i < amount; i += 1) {
     setTimeout(() => {
       count += 1;
-      if (i) {
-        time +=step ;
-      }
+      time += step;
       createPromise(count, time)
         .then(({ count, delay }) => {
           Notiflix.Notify.success(
