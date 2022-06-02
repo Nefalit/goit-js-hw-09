@@ -39,7 +39,6 @@ formEl.addEventListener('submit', ev => {
   for (let i = 0; i < amount; i += 1) {
     setTimeout(() => {
       count += 1;
-      time += step;
       createPromise(count, time)
         .then(({ count, delay }) => {
           Notiflix.Notify.success(
@@ -51,6 +50,7 @@ formEl.addEventListener('submit', ev => {
             `${emojiFail} Rejected promise ${count} in ${delay}ms`
           );
         });
+      time += step;
     }, time);
     count = 0;
   }
